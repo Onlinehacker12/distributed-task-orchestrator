@@ -165,7 +165,11 @@ Potential enhancements that would further align this system with production-grad
 
 ## Intended Use
 
-This project is intended as a **portfolio and learning system** demonstrating how distributed background processing services are designed, reasoned about, and operated. It is not production-hardened and is not intended for real workloads.
+This project is a working distributed task orchestration system designed to demonstrate how real backend services handle asynchronous execution, retries, state management, and worker coordination.
+
+The system runs end-to-end using an API-driven submission layer, durable persistence, Redis-backed queueing and locking, and background workers that execute and record task results. It is intentionally scoped and simplified for clarity and review, but the architecture and execution model mirror patterns used in production systems.
+
+While not deployed in a production environment or scaled for unbounded workloads, the codebase is designed to be executable, inspectable, and extensible, and can serve as a foundation for further hardening, scaling, and integration into real services.
 
 ## Quick Start (Local)
 
