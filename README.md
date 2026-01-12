@@ -166,3 +166,40 @@ Potential enhancements that would further align this system with production-grad
 ## Intended Use
 
 This project is intended as a **portfolio and learning system** demonstrating how distributed background processing services are designed, reasoned about, and operated. It is not production-hardened and is not intended for real workloads.
+
+## Quick Start (Local)
+
+### Prerequisites
+- Python 3.11+
+- Docker (for Redis)
+
+### Start Redis
+```bash
+docker compose up -d
+```
+### Install dependencies:
+python -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+
+### Initialize database:
+python -m app.db.migrate
+
+### Run API:
+export API_KEY="dev-key"
+uvicorn app.main:app --reload
+
+### Run worker (new terminal):
+source .venv/bin/activate
+export API_KEY="dev-key"
+python -m app.workers.worker
+
+### Submit demo tasks:
+export API_KEY="dev-key"
+python scripts/seed_demo.py
+
+### Verify tasks complete:
+curl -H "X-API-Key: dev-key" http://127.0.0.1:8000/v1/tasks
+
+
+
